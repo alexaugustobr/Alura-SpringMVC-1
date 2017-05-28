@@ -27,7 +27,7 @@ import br.com.casadocodigo.loja.models.TipoPreco;
 @RequestMapping(value = "/produtos")
 public class ProdutosController {
 
-	// invejar dependencia
+	// injetar dependencia
 	@Autowired
 	private ProdutoDAO produtoDAO;
 

@@ -15,6 +15,9 @@
 <title>Lista de Produtos</title>
 </head>
 <body>
+<a href="/carrinho" rel="nofollow">
+Seu Carrinho ( ${carrinhoCompras.quantidade} ) 
+</a>
   <h1>Lista de Produtos</h1>
   <div>${sucesso }</div>
 

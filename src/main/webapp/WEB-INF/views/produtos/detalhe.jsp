@@ -21,6 +21,9 @@
 <title>${Produto.titulo} - Casa do Codigo</title>
 </head>
 <body>
+<a href="/carrinho" rel="nofollow">
+Seu Carrinho ( ${carrinhoCompras.quantidade} ) 
+</a>
   <article
     id="${produto.id}"
     itemscope>
@@ -55,9 +58,9 @@
       </div>
     </header>
     <section class="buy-options clearfix">
-      <form:form
-        servletRelativeAction="/carinho/add"
-        cssClass="container">
+      <form
+        action='<c:url value="/carrinho/add"/>'
+        class="container" method="POST">
         <input
           type="hidden"
           value="${produto.id}"
@@ -87,7 +90,7 @@
           class="submit-image icon-basket-alt"
           title="Compre agora '${produto.titulo}'!"
           value="comprar">Comprar Agora</button>
-      </form:form>
+      </form>
     </section>
     <div class="container">
       <section

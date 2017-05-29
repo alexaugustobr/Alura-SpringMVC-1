@@ -18,15 +18,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${Produto.titulo} - Casa do Codigo</title>
+<title>${Produto.titulo}-Casa do Codigo</title>
 </head>
 <body>
-<a href="/carrinho" rel="nofollow">
-Seu Carrinho ( ${carrinhoCompras.quantidade} ) 
-</a>
-  <article
-    id="${produto.id}"
-    itemscope>
+  <a
+    href="${s:mvcUrl('CCC#itens').build()}"
+    rel="nofollow"> Seu Carrinho ( ${carrinhoCompras.quantidade} ) </a>
+  <article id="${produto.id}">
     <header
       id="produto-highlight"
       class="clearfix">
@@ -34,21 +32,16 @@ Seu Carrinho ( ${carrinhoCompras.quantidade} )
         id="produto-overview"
         class="container">
         <img
-          itemprop="image"
           width="280px"
           height="395px"
           src=''
           class="produto-featured-image"
           alt="${produto.titulo}">
-        <h1
-          class="produto-titulo"
-          itemprop="name">${produto.titulo}</h1>
+        <h1 class="produto-titulo">${produto.titulo}</h1>
         <p class="produto-author">
           <span class="produto-author-link"> ${produto.titulo} </span>
         </p>
-        <p
-          itemprop="descricao"
-          class="book-descricao">
+        <p class="book-descricao">
           ${produto.descricao} Veja o
           <a
             href="${produto.sumarioPath}"
@@ -60,7 +53,8 @@ Seu Carrinho ( ${carrinhoCompras.quantidade} )
     <section class="buy-options clearfix">
       <form
         action='<c:url value="/carrinho/add"/>'
-        class="container" method="POST">
+        class="container"
+        method="POST">
         <input
           type="hidden"
           value="${produto.id}"
@@ -74,13 +68,12 @@ Seu Carrinho ( ${carrinhoCompras.quantidade} )
             <li class="buy-option">
               <input
                 type="radio"
-                name="tipo"
+                name="tipoPreco"
                 id="tipo"
                 class="variant-radio"
                 value="${preco.tipo}"
                 ${preco.tipo.name() == 'COMBO' ? 'checked' : ''}>
-              <label
-                class="variant-label"> ${preco.tipo} </label>
+              <label class="variant-label"> ${preco.tipo} </label>
               <p class="variant-preco">${preco.valor}</p>
             </li>
           </c:forEach>
@@ -93,32 +86,25 @@ Seu Carrinho ( ${carrinhoCompras.quantidade} )
       </form>
     </section>
     <div class="container">
-      <section
-        class="author produto-detail"
-        itemprop="author"
-        itemscope
-        itemtype="http://schema.org/Person">
-        <h2
-          class="section-titulo"
-          itemprop="name">${produto.titulo}</h2>
-        <span itemprop="descricao">
-          <p class="book-descricao">${produto.descricao}</p>
-        </span>
+      <section class="author produto-detail">
+        <h2 class="section-titulo">${produto.titulo}</h2>
+        <p class="book-descricao">${produto.descricao}</p>
       </section>
       <section class="data produto-detail">
         <h2 class="section-titulo">Dados do livro:</h2>
         <p>
-          Número de paginas: <span itemprop="numberOfPages">${produto.paginas}</span>
+          Número de paginas: <span>${produto.paginas}</span>
         </p>
         <p>
-          Data de publicação: <span><fmt:formatDate pattern="dd/MM/yyyy" value="${produto.dataLancamento.time}"/></span>
+          Data de publicação: <span><fmt:formatDate
+              pattern="dd/MM/yyyy"
+              value="${produto.dataLancamento.time}" /></span>
         </p>
         <p>
           Encontrou um erro?
           <a
             href='/submissao-errata'
-            target='_blank'>Submeta uma errata
-          </a>
+            target='_blank'>Submeta uma errata </a>
         </p>
       </section>
     </div>

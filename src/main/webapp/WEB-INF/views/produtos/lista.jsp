@@ -7,7 +7,7 @@
   prefix="c"%>
 <%@ taglib
   uri="http://www.springframework.org/tags"
-  prefix="s"%>  
+  prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +15,11 @@
 <title>Lista de Produtos</title>
 </head>
 <body>
-<a href="/carrinho" rel="nofollow">
-Seu Carrinho ( ${carrinhoCompras.quantidade} ) 
-</a>
+  <a
+    href="${s:mvcUrl('CCC#itens').build()}"
+    rel="nofollow"> Seu Carrinho ( ${carrinhoCompras.quantidade} ) </a>
   <h1>Lista de Produtos</h1>
   <div>${sucesso }</div>
-
   <table>
     <thead>
       <tr>
@@ -34,7 +33,8 @@ Seu Carrinho ( ${carrinhoCompras.quantidade} )
         items="${produtos}"
         var="produto">
         <tr>
-          <td><a href="${s:mvcUrl('PC#detalhe').arg(0,produto.id).build()}">${produto.titulo}</a></td>
+          <td><a
+              href="${s:mvcUrl('PC#detalhe').arg(0,produto.id).build()}">${produto.titulo}</a></td>
           <td>${produto.descricao}</td>
           <td>${produto.paginas}</td>
         </tr>

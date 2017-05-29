@@ -36,7 +36,6 @@ public class AppWebConfiguration {
 		//resolver.setExposeContextBeansAsAttributes(true);
 		//deixa apenas o carrinho visivel
 		resolver.setExposedContextBeanNames("carrinhoCompras");
-		
 		return resolver;
 	}
 	
